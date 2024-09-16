@@ -3,10 +3,17 @@ object bombon {
     var peso = 15
     const gusto = "Frutilla"
     const gluten = 0
+    var pesoMordido = 0
+
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
 
     method mordisco() {
+        pesoMordido = peso * 0.2 + 1
         peso = (peso * 0.8) - 1
-        return peso
+        return pesoMordido
     }
 }
 //--------------------------------------------------
@@ -16,10 +23,17 @@ object alfajor {
     var peso = 300
     const gusto = "Chocolate"
     const gluten = 1
+    var pesoMordido = 0
+
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
 
     method mordisco() {
+        pesoMordido = peso * 0.2
         peso *= 0.8
-        return peso 
+        return pesoMordido
     }
 }
 
@@ -30,8 +44,15 @@ object caramelo {
     var peso = 5
     const gusto = "Frutilla"
     const gluten = 0
+    var pesoMordido = 0
+
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
 
     method mordisco (){
+        pesoMordido = 1
         peso -= 1
         return peso
     }
@@ -44,12 +65,19 @@ object chupetin {
     var peso = 7
     const gusto = "Naranja"
     const gluten = 0
+    var pesoMordido = 0
+
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
 
     method mordisco() {
         if (peso > 2){
+            pesoMordido = peso * 0.1
             peso *= 0.9
         }
-        return peso
+        return pesoMordido
     }
 }
 
@@ -60,11 +88,19 @@ object oblea {
     var peso = 250
     const gusto = "Vainilla"
     const gluten = 1
+    var pesoMordido = 0
+
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
 
     method mordisco() {
         if (peso > 70) {
+            pesoMordido = peso * 0.5
             peso *= 0.5
         } else {
+            pesoMordido = peso * 0.25
             peso *= 0.75
         }
         return peso
@@ -79,10 +115,15 @@ object chocolatin {
     var pesoInicial = 0
     const gusto = "Chocolate"
     const gluten = 1
+    var pesoMordido = 0
 
-    method peso(gramos) {
-        peso = gramos
+    method gusto(){return gusto}
+    method gluten(){return gluten}
+    method peso(){return peso}
+
+    method pesoInicial(gramos) {
         pesoInicial = gramos
+        peso = pesoInicial
         return pesoInicial
         }
     
@@ -92,7 +133,9 @@ object chocolatin {
     }
 
     method mordisco() {
+        pesoMordido = 2
         peso -= 2
+        return pesoMordido
     }
 }
 
@@ -124,14 +167,19 @@ object golosinaBaniada {
         gluten = golosina.gluten()
     }
 
+    method precio(){return precio}
+    method peso(){return peso}
+    method gusto(){return gusto}
+    method gluten(){return gluten}
+
     method mordisco(golosina) {
-        cantMordisco+=1
         if(cantMordisco <= 2){
             peso = peso - golosina.mordisco() - 2
         } else {
             peso = peso - golosina.mordisco()
         }
         return peso
+        cantMordisco += 1
     }
 }
 
@@ -140,9 +188,13 @@ object golosinaBaniada {
 object pastillaTuttiFrutti {
     var precio = 0
     var peso = 5
-    var gusto = ""
+    var gusto = "Frutilla"
     var gluten = 0 
-    var cantMordisco = 0
+    var cantMordisco = -1
+
+    method peso() {return peso}
+    method gluten() {return gluten}
+    method gusto() {return gusto}
 
     method gluten(tiene){
         gluten = tiene 
@@ -158,18 +210,22 @@ object pastillaTuttiFrutti {
         return precio
     }
 
-    method mordisco() {
-        cantMordisco+=1
-        if (cantMordisco==1) {
+    method sabor() {
+        cantMordisco = cantMordisco + 1
+        if (cantMordisco == 0) {
             gusto = "Frutilla"
-        } 
-        if (cantMordisco == 2) {
+        }
+        if (cantMordisco == 1) {
             gusto = "Chocolate"
         }
-        if (cantMordisco == 3) {
+        if (cantMordisco == 2) {
             gusto = "Naranja"
-            cantMordisco = 0
+            cantMordisco = -1
         }
         return gusto
     }
+
+    method mordisco(){
+        return 0
+    } 
 }

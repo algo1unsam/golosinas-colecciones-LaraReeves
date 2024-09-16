@@ -1,1 +1,126 @@
+import golosinas.*
 
+test "Bombon" {
+    assert.equals(5, bombon.precio())
+    assert.equals(15, bombon.peso())
+    assert.equals("Frutilla", bombon.gusto())
+    assert.equals(0, bombon.gluten())
+    bombon.mordisco()
+    bombon.mordisco()
+    assert.equals(7.8, bombon.peso())
+}
+
+test "Alfajor" {
+    assert.equals(12, alfajor.precio())
+    assert.equals(300, alfajor.peso())
+    assert.equals("Chocolate", alfajor.gusto())
+    assert.equals(1, alfajor.gluten())
+    alfajor.mordisco()
+    alfajor.mordisco()
+    assert.equals(192, alfajor.peso())
+}
+
+test "Caramelo" {
+    assert.equals(1, caramelo.precio())
+    assert.equals(5, caramelo.peso())
+    assert.equals("Frutilla", caramelo.gusto())
+    assert.equals(0, caramelo.gluten())
+    caramelo.mordisco()
+    caramelo.mordisco()
+    assert.equals(3, caramelo.peso())
+}
+
+test "Chupetin" {
+    assert.equals(2, chupetin.precio())
+    assert.equals(7, chupetin.peso())
+    assert.equals("Naranja", chupetin.gusto())
+    assert.equals(0, chupetin.gluten())
+    chupetin.mordisco()
+    chupetin.mordisco()
+    assert.equals(5.67, chupetin.peso())
+}
+
+test "Oblea" {
+    assert.equals(5, oblea.precio())
+    assert.equals(250, oblea.peso())
+    assert.equals("Vainilla", oblea.gusto())
+    assert.equals(1, oblea.gluten())
+    oblea.mordisco()
+    oblea.mordisco()
+    oblea.mordisco()
+    assert.equals(46.875, oblea.peso())
+}
+
+test "Chocolatin" {
+    assert.equals(40, chocolatin.pesoInicial(40))
+    assert.equals(20, chocolatin.precio())
+    assert.equals("Chocolate", chocolatin.gusto())
+    assert.equals(1, chocolatin.gluten())
+    chocolatin.mordisco()
+    chocolatin.mordisco()
+    assert.equals(36, chocolatin.peso())
+    assert.equals(100, chocolatin.pesoInicial(100))
+    chocolatin.mordisco()
+    chocolatin.mordisco()
+    assert.equals(96, chocolatin.peso())
+}
+
+test "TuttiFrutti" {
+    pastillaTuttiFrutti.gluten(0)
+    assert.equals(0, pastillaTuttiFrutti.gluten())
+    assert.equals(5, pastillaTuttiFrutti.peso())
+    assert.equals(7, pastillaTuttiFrutti.precio())
+    pastillaTuttiFrutti.gluten(1)
+    assert.equals(1, pastillaTuttiFrutti.gluten())
+    assert.equals(10, pastillaTuttiFrutti.precio())
+    pastillaTuttiFrutti.sabor()
+    assert.equals("Frutilla", pastillaTuttiFrutti.gusto())
+    pastillaTuttiFrutti.sabor()
+    assert.equals("Chocolate", pastillaTuttiFrutti.gusto())
+    pastillaTuttiFrutti.sabor()
+    assert.equals("Naranja", pastillaTuttiFrutti.gusto())
+    pastillaTuttiFrutti.sabor()
+    assert.equals("Frutilla", pastillaTuttiFrutti.gusto())
+}
+
+test "Golosina Bañada" {
+    //Pastilla tutti-frutti
+    golosinaBaniada.peso(pastillaTuttiFrutti)
+    golosinaBaniada.precio(pastillaTuttiFrutti)
+    golosinaBaniada.gusto(pastillaTuttiFrutti)
+    golosinaBaniada.gluten(pastillaTuttiFrutti)
+    assert.equals(9, golosinaBaniada.peso())
+    assert.equals(9, golosinaBaniada.precio())
+    assert.equals("Frutilla", golosinaBaniada.gusto())
+    assert.equals(0, golosinaBaniada.gluten())
+    golosinaBaniada.mordisco(pastillaTuttiFrutti)
+    golosinaBaniada.mordisco(pastillaTuttiFrutti)
+    assert.equals(5, golosinaBaniada.peso())
+
+    //Chocolatin
+    chocolatin.pesoInicial(40)
+    golosinaBaniada.peso(chocolatin)
+    golosinaBaniada.precio(chocolatin)
+    golosinaBaniada.gusto(chocolatin)
+    golosinaBaniada.gluten(chocolatin)
+    assert.equals(44, golosinaBaniada.peso())
+    assert.equals(22, golosinaBaniada.precio())
+    assert.equals("Chocolate", golosinaBaniada.gusto())
+    assert.equals(1, golosinaBaniada.gluten())
+    golosinaBaniada.mordisco(chocolatin)
+    golosinaBaniada.mordisco(chocolatin)
+    assert.equals(36, golosinaBaniada.peso())
+
+    //Chupetin
+    golosinaBaniada.peso(chupetin)
+    golosinaBaniada.precio(chupetin)
+    golosinaBaniada.gusto(chupetin)
+    golosinaBaniada.gluten(chupetin)
+    assert.equals(11, golosinaBaniada.peso())
+    assert.equals(4, golosinaBaniada.precio())
+    assert.equals("Naranja", golosinaBaniada.gusto())
+    assert.equals(0, golosinaBaniada.gluten())
+    golosinaBaniada.mordisco(chupetin)
+    golosinaBaniada.mordisco(chupetin)
+    assert.equals(5.67, golosinaBaniada.peso())
+}
